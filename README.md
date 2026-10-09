@@ -2,6 +2,8 @@
 
 A local farm-to-buyer marketplace for small farms in mid-Michigan. Farmers photograph their produce and get an AI-drafted listing with a suggested price. Neighbors browse, reserve an amount, and choose a pickup time. Farmers see who's coming and mark orders as picked up.
 
+**Live demo:** https://harvest-hand.onrender.com (free hosting; the first load after a quiet period can take up to a minute, and demo data resets on restart)
+
 <img src="docs/screenshot.png" alt="Shop view on a phone" width="320">
 
 ## Features

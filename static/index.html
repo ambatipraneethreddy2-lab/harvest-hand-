@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Harvest Hand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/static/style.css">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Harvest <span>Hand</span></h1>
+      <p class="sub">Local farms list it in a minute. Neighbors reserve and pick it up.</p>
+    </div>
+    <div class="userbar" id="userbar" hidden><span id="who"></span><button class="switch" id="logout">Log out</button></div>
+  </header>
+
+  <!-- Login / sign up -->
+  <form class="panel auth" id="authForm" hidden>
+    <h2 id="authTitle">Log in</h2>
+    <label id="nameRow" hidden>Your name<input id="aName" maxlength="60" autocomplete="name"></label>
+    <label>Email<input id="aEmail" type="email" required autocomplete="email"></label>
+    <label>Password<input id="aPass" type="password" required minlength="6" autocomplete="current-password"></label>
+    <div class="row"><button class="btn" type="submit" id="authBtn">Log in</button><span class="err" id="authErr"></span></div>
+    <p class="note"><span id="authAlt">New here?</span> <button type="button" class="switch" id="authSwitch">Create an account</button></p>
+  </form>
+
+  <div id="app" hidden>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="buy">Shop</button>
+      <button role="tab" aria-selected="false" data-tab="sell">Sell produce</button>
+      <button role="tab" aria-selected="false" data-tab="pick">Pickups</button>
+    </nav>
+
+    <section id="view-buy">
+      <div class="chips" id="cats"></div>
+      <div class="grid" id="listings"></div>
+    </section>
+
+    <section id="view-sell" hidden>
+      <form class="panel" id="sellForm" autocomplete="off">
+        <h2>List your harvest</h2>
+        <div class="drop">
+          <div id="dropText"><b>Add a photo</b><br>Tap to choose a picture of the produce</div>
+          <input type="file" id="photo" accept="image/jpeg,image/png,image/webp">
+        </div>
+        <label>What is it, in your words
+          <textarea id="notes" placeholder="e.g. Honeycrisp apples, picked yesterday, a few have small spots"></textarea>
+        </label>
+        <div class="row">
+          <button type="button" class="btn ghost" id="aiBtn">Write my listing with AI</button>
+          <span class="note" id="aiStatus"></span>
+        </div>
+        <div class="ai" id="aiBox" hidden></div>
+        <div class="two">
+          <label>Listing title<input id="title" required maxlength="80" placeholder="Honeycrisp apples"></label>
+          <label>Farm name<input id="farm" required maxlength="80" placeholder="Maple Row Farm"></label>
+        </div>
+        <label>Description<textarea id="desc" maxlength="600" placeholder="Crisp, sweet, picked this week"></textarea></label>
+        <div class="two">
+          <label>Category<select id="cat"></select></label>
+          <label>Unit<select id="unit"></select></label>
+        </div>
+        <div class="two">
+          <label>Price per unit ($)<input id="price" type="number" step="0.01" min="0" required placeholder="2.50"></label>
+          <label>Amount available<input id="qty" type="number" min="1" required placeholder="40"></label>
+        </div>
+        <label>Pickup place<input id="place" required maxlength="160" placeholder="Farm stand, E Broomfield Rd"></label>
+        <label>Pickup times<input id="slots" required maxlength="300" placeholder="Sat 9–12, Sun 1–4"></label>
+        <p class="note">Separate pickup times with commas. Buyers will choose one.</p>
+        <div class="row"><button class="btn" id="publishBtn" type="submit">Post listing</button><span class="err" id="sellErr"></span></div>
+      </form>
+      <h2 class="sec">Your listings</h2>
+      <div class="list" id="mine"></div>
+    </section>
+
+    <section id="view-pick" hidden>
+      <h2 class="sec" style="margin-top:0">Orders for your farm</h2>
+      <div class="list" id="incoming"></div>
+      <h2 class="sec">Your reservations</h2>
+      <div class="list" id="outgoing"></div>
+    </section>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -64,6 +64,12 @@ uvicorn app.main:app --reload
 
 Run the tests with `python -m pytest`.
 
+## Deploy
+
+On [Render](https://render.com): **New → Blueprint**, then select this repo. `render.yaml` sets everything up. Add `ANTHROPIC_API_KEY` in the service's Environment tab to turn on photo-based drafts.
+
+On the free plan the database and photos reset when the service restarts, so treat it as a demo.
+
 ## Roadmap
 
 - Replace the rule-based price guide with a regression model trained on real listing and sell-through data

@@ -395,6 +395,11 @@ async def ai_draft(notes: str = Form("", max_length=600), photo: UploadFile | No
     return out
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.get("/api/meta")
 def meta():
     return {"categories": CATEGORIES, "units": UNITS, "ai": bool(os.getenv("ANTHROPIC_API_KEY", "").strip())}
